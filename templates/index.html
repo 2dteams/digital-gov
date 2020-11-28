@@ -6,56 +6,62 @@
 {% block content %}
     <aside class="side-view">
         <section class="attrs-list">
-            <h1>Attributes</h1>
-            <h2>Attributes not found</h2>
-{#            <table>#}
-{#                <thead>#}
-{#                <tr>#}
-{#                    <th>Name</th>#}
-{#                    <th>Type</th>#}
-{#                </tr>#}
-{#                </thead>#}
-{#                <tbody>#}
-{#                <tr>#}
-{#                    <td>IndividualID</td>#}
-{#                    <td>Long</td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td>LastName</td>#}
-{#                    <td>String</td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td>FName</td>#}
-{#                    <td>String</td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td>Patronymic</td>#}
-{#                    <td>String</td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td>SNILS</td>#}
-{#                    <td>String</td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td>DateBirth</td>#}
-{#                    <td>Date</td>#}
-{#                </tr>#}
-{#                </tbody>#}
-{#            </table>#}
+            <h1>Атрибуты</h1>
+            <div id="attrs-info">
+                <h2>Выберете узел</h2>
+            </div>
+            {#            <table>#}
+            {#                <thead>#}
+            {#                <tr>#}
+            {#                    <th>Name</th>#}
+            {#                    <th>Type</th>#}
+            {#                </tr>#}
+            {#                </thead>#}
+            {#                <tbody>#}
+            {#                <tr>#}
+            {#                    <td>IndividualID</td>#}
+            {#                    <td>Long</td>#}
+            {#                </tr>#}
+            {#                <tr>#}
+            {#                    <td>LastName</td>#}
+            {#                    <td>String</td>#}
+            {#                </tr>#}
+            {#                <tr>#}
+            {#                    <td>FName</td>#}
+            {#                    <td>String</td>#}
+            {#                </tr>#}
+            {#                <tr>#}
+            {#                    <td>Patronymic</td>#}
+            {#                    <td>String</td>#}
+            {#                </tr>#}
+            {#                <tr>#}
+            {#                    <td>SNILS</td>#}
+            {#                    <td>String</td>#}
+            {#                </tr>#}
+            {#                <tr>#}
+            {#                    <td>DateBirth</td>#}
+            {#                    <td>Date</td>#}
+            {#                </tr>#}
+            {#                </tbody>#}
+            {#            </table>#}
         </section>
         <section class="links-list">
-            <h1>Links</h1>
-            <h2>Links is none</h2>
+            <h1>Связанные узлы</h1>
+            <div id="links-info">
+                <h2>Выберете узел</h2>
+            </div>
         </section>
         <section class="hierarchy">
-            <h1>Describe</h1>
-            <h2>Select node</h2>
+            <h1>Информация</h1>
+            <div id="hierarchy-info">
+                <h2>Выберете узел</h2>
+            </div>
         </section>
     </aside>
     <main id="content">
         <section class="main-view graph-view">
             <div id="cy"></div>
-{#            <img id="graph-img" src="{{ url_for('static', filename='img/temp-graph.png') }}" alt="GRAPH">#}
+            {#            <img id="graph-img" src="{{ url_for('static', filename='img/temp-graph.png') }}" alt="GRAPH">#}
         </section>
     </main>
 {% endblock %}

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var cy = cytoscape({
+    let cy = cytoscape({
         elements: {
             nodes: [
                 {data: {id: 'n5', text: 'ФизическоеЛицо'}},
@@ -61,8 +61,75 @@ $(document).ready(function () {
             }
         },],
     });
-    cy.on('tap', 'node', function (evt) {
-        var node = evt.target;
-        console.log(cy.edges(['source = "Дом"']));
+
+    var nodeOptions = {
+        normal: {
+            bgColor: '#28608c'
+        },
+        selected: {
+            bgColor: '#9e9711'
+        }
+    };
+
+    var tableSelect = false;
+
+    var selectedNodeHandler = function (evt) {
+        let node = evt.target;
+        node.animate({
+            style: {
+                'background-color': nodeOptions.selected.bgColor
+            }
+        }, {
+            duration: 100
+        });
+
+        cy.viewport({
+            zoom: 2.0,
+            pan: {x: -node.position().x, y: -node.position().y},
+        });
+
+        let temp = cy.filter((element, i) => {
+            return element.isEdge() && (element.data('source') === node.id() || element.data('target') === node.id());
+        });
+
+        let tableElements = "<table><tbody>";
+        temp.forEach((elem) => {
+            if (elem.data('source') === node.id()) {
+                tableElements += '<tr><td>' + cy.getElementById(elem.data('target')).data('text') + '</td></tr>';
+            } else {
+                tableElements += '<tr><td>' + cy.getElementById(elem.data('source')).data('text') + '</td></tr>';
+            }
+        })
+        tableElements += "</tbody></table>"
+
+        $('#links-info').html(tableElements);
+
+        $('#links-info td').click((cell) => {
+            let temp = cy.filter((element, i) => {
+                return element.isNode() && element.data('text') === cell.target.innerText;
+            });
+            tableSelect = true;
+            this.unselect();
+            temp[0].select();
+        });
+    }
+    var unselectedHandler = function (evt) {
+        evt.target.stop();
+        evt.target.style({
+            'background-color': nodeOptions.normal.bgColor
+        });
+
+        cy.viewport({
+            zoom: 0.5,
+            pan: {x: 300, y: 150},
+        });
+        if (!tableSelect)
+            $('#links-info').html("<h2>Выберете узел</h2>");
+    }
+
+    cy.on('select', 'node', selectedNodeHandler);
+    cy.on('unselect', 'node', unselectedHandler);
+    cy.on('tap', 'node', (evt) => {
+        tableSelect = false;
     });
 });
