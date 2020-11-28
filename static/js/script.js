@@ -161,6 +161,7 @@ $(document).ready(function () {
     });
 
     $(".finder button").click((button) => {
+        cy.nodes().unselect();
         let text = $(".finder input").val().split(' ').join('').toLowerCase();
         let temp = cy.filter((element, i) => {
             return element.isNode() && element.data('text').split(' ').join('').toLowerCase().includes(text);
