@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}{% endblock %} - My Webpage</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <title>{% block title %}{% endblock %} - GDM Visualiser</title>
     {% endblock %}
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
-        {% block footer %}
+<div id="content">{% block content %}{% endblock %}</div>
+<div id="footer">
+    {% block footer %}
         &copy; Copyright 2020 by 2DTeams
-        {% endblock %}
-    </div>
+    {% endblock %}
+</div>
 </body>
 </html>
