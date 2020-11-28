@@ -4,10 +4,56 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <main>
-    <section class="main-view">
-
-    </section>
-
+    <aside class="side-view">
+        <section class="attrs-list">
+            <h1>Attributes</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>IndividualID</td>
+                    <td>Long</td>
+                </tr>
+                <tr>
+                    <td>LastName</td>
+                    <td>String</td>
+                </tr>
+                <tr>
+                    <td>FName</td>
+                    <td>String</td>
+                </tr>
+                <tr>
+                    <td>Patronymic</td>
+                    <td>String</td>
+                </tr>
+                <tr>
+                    <td>SNILS</td>
+                    <td>String</td>
+                </tr>
+                <tr>
+                    <td>DateBirth</td>
+                    <td>Date</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="links-list">
+            <h1>Links</h1>
+            <h2>Links is none</h2>
+        </section>
+        <section class="hierarchy">
+            <h1>Hierarchy</h1>
+            <h2>This node is the root node in the database</h2>
+        </section>
+    </aside>
+    <main id="content">
+        <section class="main-view graph-view">
+            <img id="graph-img" src="{{ url_for('static', filename='img/temp-graph.png') }}" alt="GRAPH">
+        </section>
     </main>
 {% endblock %}
