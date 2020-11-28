@@ -1,19 +1,35 @@
 $(document).ready(function () {
     var cy = cytoscape({
+        elements: {
+            nodes: [
+                {data: {id: 'n0'}},
+                {data: {id: 'n1'}},
+                {data: {id: 'n2'}},
+                {data: {id: 'n3'}},
+                {data: {id: 'n4'}},
+            ],
+            edges: [
+                {data: {id: 'e0', source: 'n0', target: 'n1'}},
+                {data: {id: 'e1', source: 'n0', target: 'n3'}},
+                {data: {id: 'e2', source: 'n1', target: 'n2'}},
+                {data: {id: 'e3', source: 'n2', target: 'n4'}},
+                {data: {id: 'e4', source: 'n4', target: 'n0'}}
+            ]
+        },
         container: document.getElementById('cy'),
+        layout: {
+            name: 'grid',
+        },
+        style: [{
+            selector: 'node',
+            style: {
+                'content': 'data(id)',
+                'text-valign': 'center',
+                'color': 'white',
+                'background-color': 'red',
+                'text-outline-width': 2,
+                'text-outline-color': '#222'
+            }
+        }],
     });
-
-    var eles = cy.add([
-        {group: 'nodes', data: {id: 'n0'}, position: {x: 100, y: 100}},
-        {group: 'nodes', data: {id: 'n1'}, position: {x: 100, y: 100}},
-        {group: 'nodes', data: {id: 'n2'}, position: {x: 100, y: 100}},
-        {group: 'nodes', data: {id: 'n3'}, position: {x: 100, y: 100}},
-        {group: 'nodes', data: {id: 'n4'}, position: {x: 200, y: 200}},
-
-        {group: 'edges', data: {id: 'e0', source: 'n0', target: 'n1'}},
-        {group: 'edges', data: {id: 'e1', source: 'n0', target: 'n3'}},
-        {group: 'edges', data: {id: 'e2', source: 'n1', target: 'n2'}},
-        {group: 'edges', data: {id: 'e3', source: 'n2', target: 'n4'}},
-        {group: 'edges', data: {id: 'e4', source: 'n4', target: 'n0'}}
-    ]);
 });
