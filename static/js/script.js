@@ -26,7 +26,7 @@ $(document).ready(function () {
                 'content': 'data(id)',
                 'text-valign': 'center',
                 'color': 'white',
-                'background-color': 'red',
+                'background-color': '#262626',
                 'text-outline-width': 2,
                 'text-outline-color': '#222'
             }
