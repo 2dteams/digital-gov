@@ -60,18 +60,18 @@ main#content {
 }
 
 .attrs-list {
-    height: 25%;
+    height: 30%;
     border-bottom: 5px solid #262626;
     overflow: scroll;
 }
 
 .links-list {
-    height: 25%;
+    height: 30%;
     border-bottom: 5px solid #262626;
 }
 
 .hierarchy {
-    height: 25%;
+    height: 30%;
 }
 
 .links-list h2,

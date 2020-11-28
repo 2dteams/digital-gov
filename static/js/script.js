@@ -61,6 +61,8 @@ $(document).ready(function () {
             }
         },],
     });
-
-    var eles = cy.add([]);
+    cy.on('tap', 'node', function (evt) {
+        var node = evt.target;
+        console.log(cy.edges(['source = "Дом"']));
+    });
 });
