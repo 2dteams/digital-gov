@@ -46,6 +46,10 @@ main#content {
     width: auto;
 }
 
+#cy {
+    height: 100%;
+}
+
 .temp {
     height: 100%;
     width: 100%;
@@ -59,6 +63,7 @@ main#content {
 .attrs-list {
     height: 25%;
     border-bottom: 5px solid gray;
+    overflow: scroll;
 }
 
 .links-list {
@@ -91,13 +96,17 @@ main#content {
 }
 
 .attrs-list table th {
-     border: 1px solid gray;
+    border: 1px solid gray;
+    height: 30px;
+    vertical-align: middle;
 }
 
 .attrs-list table td {
     color: white;
     border: 1px solid gray;
     text-align: center;
+    height: 30px;
+    vertical-align: middle;
 }
 
 aside .temp {
