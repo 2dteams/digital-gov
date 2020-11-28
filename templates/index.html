@@ -25,9 +25,13 @@
         </section>
     </aside>
     <main id="content">
+        <section class="finder">
+            <button>Искать</button>
+            <label><input type="text"></label>
+        </section>
         <section class="main-view graph-view">
             <div id="cy"></div>
         </section>
     </main>
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

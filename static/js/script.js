@@ -74,6 +74,16 @@ $(document).ready(function () {
     var tableSelect = false;
 
     var selectedNodeHandler = function (evt) {
+        cy.nodes().animate({
+            style: {
+                'background-color': nodeOptions.normal.bgColor,
+                'width': 30,
+                'height': 30,
+            }
+        }, {
+            duration: 100
+        });
+
         let node = evt.target;
         node.animate({
             style: {
@@ -85,21 +95,29 @@ $(document).ready(function () {
             duration: 100
         });
 
+        let tableAttrs = "<table><tbody>";
+        Object.entries(node.data()).forEach((attr) => {
+            tableAttrs += '<tr><td>' + attr[0] + '</td><td>' + attr[1] + '</td>';
+        })
+        tableAttrs += "</tbody></table>"
+
+        $('#attrs-info').html(tableAttrs);
+
         let temp = cy.filter((element, i) => {
             return element.isEdge() && (element.data('source') === node.id() || element.data('target') === node.id());
         });
 
-        let tableElements = "<table><tbody>";
+        let tableLinks = "<table><tbody>";
         temp.forEach((elem) => {
             if (elem.data('source') === node.id()) {
-                tableElements += '<tr><td>' + cy.getElementById(elem.data('target')).data('text') + '</td></tr>';
+                tableLinks += '<tr><td>' + cy.getElementById(elem.data('target')).data('text') + '</td></tr>';
             } else {
-                tableElements += '<tr><td>' + cy.getElementById(elem.data('source')).data('text') + '</td></tr>';
+                tableLinks += '<tr><td>' + cy.getElementById(elem.data('source')).data('text') + '</td></tr>';
             }
         })
-        tableElements += "</tbody></table>"
+        tableLinks += "</tbody></table>"
 
-        $('#links-info').html(tableElements);
+        $('#links-info').html(tableLinks);
 
         $('#links-info td').click((cell) => {
             let temp = cy.filter((element, i) => {
@@ -124,8 +142,10 @@ $(document).ready(function () {
             duration: 100
         });
 
-        if (!tableSelect)
+        if (!tableSelect) {
+            $('#attrs-info').html("<h2>Выберете узел</h2>");
             $('#links-info').html("<h2>Выберете узел</h2>");
+        }
     }
 
     cy.on('select', 'node', selectedNodeHandler);
@@ -133,4 +153,37 @@ $(document).ready(function () {
     cy.on('tap', 'node', (evt) => {
         tableSelect = false;
     });
+
+
+    $('.finder input').keypress(function (e) {
+        if (e.keyCode === 13)
+            $('.finder button').click();
+    });
+
+    $(".finder button").click((button) => {
+        let text = $(".finder input").val().split(' ').join('').toLowerCase();
+        let temp = cy.filter((element, i) => {
+            return element.isNode() && element.data('text').split(' ').join('').toLowerCase().includes(text);
+        });
+
+        cy.nodes().animate({
+            style: {
+                'background-color': nodeOptions.normal.bgColor,
+                'width': 30,
+                'height': 30,
+            }
+        }, {
+            duration: 100
+        });
+
+        temp.animate({
+            style: {
+                'background-color': 'red',
+                'width': 35,
+                'height': 35,
+            }
+        }, {
+            duration: 100
+        });
+    })
 });

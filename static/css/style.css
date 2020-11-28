@@ -45,6 +45,11 @@ body {
     width: 100%;
 }
 
+.finder {
+    background-color: #403d3d;
+}
+
+.finder button,
 #data-selector form label[for='file'],
 #data-selector form input[type='submit'] {
     border: 2px solid #262626;
@@ -58,10 +63,27 @@ body {
     font-weight: bold;
 }
 
+.finder button:focus {
+    outline: none;
+}
+
+.finder button {
+    line-height: 30px;
+    width: 150px;
+    margin: 10px;
+}
+
+.finder input {
+    border-radius: 5px;
+    height: 28px;
+    width: 400px;
+}
+
 #data-selector form input[type='submit'] {
     margin-top: 20px;
 }
 
+.finder button:hover,
 #data-selector form input[type='submit']:hover,
 #data-selector form label[for='file']:hover {
     border: 2px solid #262626;
