@@ -26,8 +26,8 @@ $(document).ready(function () {
                 'content': 'data(id)',
                 'text-valign': 'center',
                 'color': 'white',
-                'background-color': '#262626',
-                'text-outline-width': 2,
+                'background-color': '#28608c',
+                'text-outline-width': 1,
                 'text-outline-color': '#222'
             }
         }],
