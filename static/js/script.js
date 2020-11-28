@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let cy = cytoscape({
+    var cy = cytoscape({
         elements: {
             nodes: [
                 {data: {id: 'n5', text: 'ФизическоеЛицо'}},

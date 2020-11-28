@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Main{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <main id="data-selector">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" id="file" name="file" accept=".xsd, .owl">
+            <label for="file">Выбрать файл</label>
+            <h4>Файл не выбран</h4>
+            <input type="submit">
+        </form>
+    </main>
+<script src="{{ url_for('static', filename='js/file_selector.js') }}"></script>
+{% endblock %}

@@ -1,19 +1,17 @@
 from flask import Flask
 from flask import render_template
-from urllib.request import urlopen
-from owlready2 import *
-import csv
+from flask import request
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def index(name='index'):
-    return render_template('index.html')
+def get_ogd(name='DataSelector'):
+    return render_template('selector.html')
 
 
-@app.route('/get_ogd')
-def get_ogd(name='DATAgov'):
-    response = urlopen('https://data.gov.ru/opendata/export/csv')
-    file = csv.DictReader(response)
+@app.route('/', methods=['POST'])
+def main_chart(name='index'):
+    file = request.files.get('file')
+    file
     return render_template('index.html')
