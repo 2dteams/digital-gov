@@ -77,15 +77,12 @@ $(document).ready(function () {
         let node = evt.target;
         node.animate({
             style: {
-                'background-color': nodeOptions.selected.bgColor
+                'background-color': nodeOptions.selected.bgColor,
+                'width': 80,
+                'height': 80,
             }
         }, {
             duration: 100
-        });
-
-        cy.viewport({
-            zoom: 2.0,
-            pan: {x: -node.position().x, y: -node.position().y},
         });
 
         let temp = cy.filter((element, i) => {
@@ -113,16 +110,20 @@ $(document).ready(function () {
             temp[0].select();
         });
     }
+
     var unselectedHandler = function (evt) {
+        tableSelect = false;
         evt.target.stop();
-        evt.target.style({
-            'background-color': nodeOptions.normal.bgColor
+        evt.target.animate({
+            style: {
+                'background-color': nodeOptions.normal.bgColor,
+                'width': 30,
+                'height': 30,
+            }
+        }, {
+            duration: 100
         });
 
-        cy.viewport({
-            zoom: 0.5,
-            pan: {x: 300, y: 150},
-        });
         if (!tableSelect)
             $('#links-info').html("<h2>Выберете узел</h2>");
     }
